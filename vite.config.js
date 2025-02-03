@@ -47,7 +47,10 @@ export default defineConfig({
       // }
       // }
       // swc configs, see [swc doc](https://swc.rs/docs/configuration/swcrc)
-      swcOptions: {}
+      swcOptions: {},
+      build: {
+        target: 'esnext'
+      }
     })
   ],
 });

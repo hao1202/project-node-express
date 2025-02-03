@@ -1,14 +1,21 @@
-const express = require('express');
-const dotenv = require('dotenv');
-const productRouter = require('./routers/product'); 
+import express from 'express';
+import dotenv from 'dotenv';
+import productRouter from './routers/product.js';
+import handleMongoDB from './config/db.js';
 
 dotenv.config();
-// create application
+
+// Create application
 const app = express();
-// data processing (middleware)
+
+// Data processing (middleware)
 app.use(express.json());
 
-// routers
+// Connect to database
+handleMongoDB.connectDB(process.env.MONGODB_CONNECT_URL);
+
+// Routes
 app.use('/api/products', productRouter);
 
-export default viteNodeApp = app;
+// Export viteNodeApp
+export const viteNodeApp = app; // 🔹 Export đúng tên
